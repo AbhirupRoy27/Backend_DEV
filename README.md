@@ -94,4 +94,50 @@ my-express-app/
 
 ---
 
-This structure guide **start simple and scale up** as your application grows.
+— This structure guide **start simple and scale up** as your application grows.
+
+---
+
+<br/>
+
+# HTTP status codes — categories & common ones with meaning
+
+Think of status codes as short signals the server sends about the outcome.
+
+1xx — informational (rarely used directly in APIs)
+
+2xx — success
+
+200 OK — request succeeded; response body contains result.
+
+201 Created — resource created. Best practice: include Location header pointing to new resource URI and return created entity.
+
+202 Accepted — request accepted for processing but not completed (useful for async jobs).
+
+204 No Content — success, but no response body (common after DELETE or PUT where no body needed).
+
+3xx — redirection (rare in APIs)
+
+4xx — client errors
+
+400 Bad Request — malformed request or validation error.
+
+401 Unauthorized — authentication required or failed.
+
+403 Forbidden — authenticated but not allowed to perform action.
+
+404 Not Found — resource doesn’t exist.
+
+409 Conflict — resource conflict (e.g., duplicate unique field).
+
+422 Unprocessable Entity — semantic validation failed (useful for APIs that want a clear validation vs syntax error).
+
+429 Too Many Requests — rate limiting.
+
+5xx — server errors
+
+500 Internal Server Error — generic server error.
+
+502 Bad Gateway, 503 Service Unavailable, 504 Gateway Timeout — infra issues (upstreams, maintenance, timeouts).
+
+---
