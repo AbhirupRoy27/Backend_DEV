@@ -24,10 +24,18 @@ const newUser = new Users({
 
 async function adduser() {
   try {
-    newUser.save()
+    await newUser.save()
     console.log('User saved!')
   } catch (err) {
-    console.error('Error:', err.message)
+    switch (err.name === 'MongoServerError') {
+      case 11000:
+        console.log('duplicate Data')
+        break
+      default:
+        console.log('Other MongoServerError')
+    }
   }
 }
 adduser()
+
+app.listen(3000)
