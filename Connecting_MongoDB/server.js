@@ -17,9 +17,9 @@ connectDB()
 
 //instance object of the model.
 const newUser = new Users({
-  name: 'Alice',
-  email: 'alice@example.com',
-  job: 'Business Man',
+  name: '', // String
+  email: '', // String
+  job: '', // String
 })
 
 async function adduser() {
@@ -48,11 +48,11 @@ app.get('/users', async (req, res) => {
 })
 
 app.get('/:id', async (req, res) => {
-  const id = parseInt(req.params.id)
+  const id = req.params.id
   if (!id) {
     res.status(404).json({ message: 'not Found' })
   }
-  const data = await Users.findById('68cfaf08c6206450474d27db')
+  const data = await Users.findById(id)
   res.status(200).json(data)
 })
 
